@@ -1,6 +1,6 @@
 import { RouteComponentProps } from "react-router-dom";
 import React, { Fragment } from 'react';
-import { fSetParamA, TSetParamA } from "../Module/SampleModule/Action";
+import { fSetParamA } from "../Module/SampleModule/Action";
 import { connect, ConnectedProps } from 'react-redux';
 import { StoreStateI } from "../Module/Store/Store";
 
