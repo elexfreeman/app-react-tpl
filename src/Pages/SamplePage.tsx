@@ -1,26 +1,46 @@
 import { RouteComponentProps } from "react-router-dom";
-import React from 'react';
+import React, { Fragment } from 'react';
+import { fSetParamA, TSetParamA } from "../Module/SampleModule/Action";
+import { connect, ConnectedProps } from 'react-redux';
+import { StoreStateI } from "../Module/Store/Store";
 
-export interface PropsI { }
+const mapState = (state: StoreStateI) => ({
+    nParamA: state.SampleModule.nParamA,
+});
+
+export const mapDispatchToProps = {
+    fSetParamA: fSetParamA,
+}
+
+/**
+ * Типы для редакса
+ */
+const connector = connect(mapState, mapDispatchToProps);
+type PropsFromRedux = ConnectedProps<typeof connector>;
+type PropsI = PropsFromRedux & {}
 
 export interface StateI { }
 
 /**
  * Индексная страница
  */
-export class SamplePage extends React.Component<RouteComponentProps<PropsI>, StateI> {
+class SamplePage extends React.Component<PropsI, StateI> {
 
-    constructor(props: RouteComponentProps<PropsI>) {
-        super(props);
-        this.state = {};
+
+    componentDidMount() {
+        console.log(this.props);
+
     }
 
-    public render() {
+    render() {
         return (
-            <div className="container">
-                SamplePage
-            </div>
+            <Fragment>
+                <div>{this.props.nParamA}</div>
+                <button onClick={() => this.props.fSetParamA(10)}>Нажать</button>
+            </Fragment>
         )
     }
-
 }
+
+
+export default connector(SamplePage);

@@ -6,7 +6,7 @@ import { Header } from './Module/Wraper/Header';
 
 import { testService } from "./Service/TestService";
 import { IndexPage } from './Pages/IndexPage';
-import { SamplePage } from './Pages/SamplePage';
+import SamplePage from './Pages/SamplePage';
 
 export interface AppPropsI { }
 
@@ -47,22 +47,25 @@ class App extends React.Component<AppPropsI, AppStateI> {
             <div className="App">
                 <Header caption="Caption" />
                 <HashRouter>
-                        <nav>
-                            <ul>
-                                <li>
-                                    <Link to="/">Home</Link>
-                                </li>
-                                <li>
-                                    <Link to="/products/1">First Product</Link>
-                                </li>
-                                <li>
-                                    <Link to="/products/2">Second Product</Link>
-                                </li>
-                            </ul>
-                        </nav>
+                    <nav>
+                        <ul>
+                            <li>
+                                <Link to="/">Home</Link>
+                            </li>
+                            <li>
+                                <Link to="/products/1">First Product</Link>
+                            </li>
+                            <li>
+                                <Link to="/products/2">Second Product</Link>
+                            </li>
+                            <li>
+                                <Link to="/sample">Sample</Link>
+                            </li>
+                        </ul>
+                    </nav>
 
-                        <Route path="/" exact component={IndexPage} />
-                        <Route path="/sample" exact component={SamplePage} />
+                    <Route path="/" exact component={IndexPage} />
+                    <Route path="/sample" exact component={SamplePage} />
                 </HashRouter>
             </div>
         )
